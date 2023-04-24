@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  hadoop-master:
+    build: ./master
+    container_name: hadoop-master
+    # restart: always
+    hostname: hadoop-master
+    networks:
+      - hadoop-nw
+    ports:
+      - "8088:8088"
+      - "9870:9870"
+    environment:
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+      - HDFS_SECONDARYNAMENODE_USER=root
+
+  hadoop-slave-1:
+    build: ./slave
+    container_name: hadoop-slave-1
+    # restart: always
+    hostname: hadoop-slave-1
+    networks:
+      - hadoop-nw
+    environment:
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+      - HDFS_SECONDARYNAMENODE_USER=root
+
+  hadoop-slave-2:
+    build: ./slave
+    container_name: hadoop-slave-2
+    # restart: always
+    hostname: hadoop-slave-2
+    networks:
+      - hadoop-nw
+    environment:
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+      - HDFS_SECONDARYNAMENODE_USER=root
+
+networks:
+  hadoop-nw:
+    driver: bridge
+  
