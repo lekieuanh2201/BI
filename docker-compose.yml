@@ -23,6 +23,8 @@ services:
     hostname: hadoop-slave-1
     networks:
       - hadoop-nw
+    ports:
+      - "9864:9864"
     environment:
       - HDFS_NAMENODE_USER=root
       - HDFS_DATANODE_USER=root
@@ -35,6 +37,8 @@ services:
     hostname: hadoop-slave-2
     networks:
       - hadoop-nw
+    ports:
+      - "9860:9864"
     environment:
       - HDFS_NAMENODE_USER=root
       - HDFS_DATANODE_USER=root

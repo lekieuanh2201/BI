@@ -43,7 +43,7 @@ RUN chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
 
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
+
 # RUN service ssh start 
 CMD [ "sh", "-c", "service ssh start; bash"]
-# CMD ["hadoop", "namenode"]
 
